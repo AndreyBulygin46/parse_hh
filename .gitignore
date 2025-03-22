@@ -1,0 +1,6 @@
+/venv_parse_hh
+/.mypy_cache
+/DELETE.py
+/main_app_parse.spec
+/dist
+/build
