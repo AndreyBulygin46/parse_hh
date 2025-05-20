@@ -23,3 +23,4 @@ def parse(*,vacantion, pages, per_page):
 
     with open('vacansions.json', 'w', encoding='utf-8') as f:
         json.dump(list_jobs, f)
+# parse(vacantion='(python AND junior) OR (python AND стажер) OR (python AND начинающий)', pages=1, per_page=1)

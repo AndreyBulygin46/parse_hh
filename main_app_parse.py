@@ -8,20 +8,22 @@ import os
 
 
 win = Tk()
+win.title('Поиск вакансий')
 width  = win.winfo_screenwidth()//2-250 # добавить смещение в центр
 height = win.winfo_screenheight()//2-200
 win.geometry(f'500x400+{width}+{height}')
 win.resizable(False,False)
 
 """Функции"""
-
 def send_request():
-    request = en_request.get()
+    request = en_request.get()        # запрос пользователя
+    quantity_vancions = int(en_vac.get())  # количество вакансий на странице
+    quantity_pages = int(en_pages.get())            # количество страниц
     if request:
         mb.showinfo('Инфо', 'Запрос отправлен\n'
         'Программа не зависла\n'
         'Пожалуйста, подождите')
-        parse(vacantion=request, pages=100, per_page=100)
+        parse(vacantion=request, pages=quantity_pages, per_page=quantity_vancions)
         mb.showinfo('Инфо', 'Файл составлен')
     else:
         mb.showerror('Ошибка', 'Пустой запрос')
@@ -40,10 +42,25 @@ def open_excel():
     except Exception:
         mb.showerror('Ошибка', 'Файл не найден\nПроверьте запрос')
 
-lb_request = Label(win, text='Запрос:', font=('Arial', 12))       # Лэйбл запрос
+lb_request = Label(win, text='Запрос:', font=('Arial', 12))          # Лэйбл запрос
 lb_request.pack()
-en_request = Entry(win, font=('Arial', 12), width=50)             # Поле ввода запроса
+en_request = Entry(win, font=('Arial', 12), width=50)                # Поле ввода запроса
+en_request.insert(END, '(python AND junior) OR (python AND стажер) OR (python AND начинающий) OR python') # стандартный запрос в en_request
 en_request.pack()
+
+# Лэбл количество страниц
+lb_pages = Label(win, text='Количество страниц:', font=('Arial', 8))
+lb_pages.place(x=10, y=150)
+en_pages = Entry(win, font=('Arial', 12), width=5)
+en_pages.insert(END, '100')
+en_pages.place(x=129, y=150)
+
+# Лэбл количество вакансий на странице
+lb_vac = Label(win, text='Количество вакансий\nна странице:', font=('Arial', 8))
+lb_vac.place(x=10, y=200)
+en_vac = Entry(win, font=('Arial', 12), width=5)
+en_vac.insert(END, '100')
+en_vac.place(x=129, y=200)
 
 lb_example = Label(win, text='Пример:\n'
 '(python AND junior) OR (python AND стажер)', font=('Arial',12))  # Пример запроса

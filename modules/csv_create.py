@@ -20,8 +20,8 @@ def  create_excel():
             url = vacantion['alternate_url']    # url
             description = vacantion['snippet']['requirement']
             name_compani = vacantion['employer']['name']
-            description_vacansions += [(name, description, url, name_compani)]  # добавляет, все ок.
-
+            employment = vacantion['employment']['name']  # Занятость
+            description_vacansions += [(name, description, url, name_compani, employment)]  # добавляет, все ок.
 
     # создание excel
 
@@ -36,8 +36,9 @@ def  create_excel():
     sheet['G1'] = 'Компания'
     sheet['H1'] = 'Описание'
     sheet['I1'] = 'Адрес страницы'
+    sheet['J1'] = 'Занятость'
     # а вот тут наверное будет цикл чтобы добавить так как это не меняется
-    for name, desc, url, name_comp in description_vacansions:
-        sheet.append(['нет','','','нет','',name, name_comp ,desc, url])  # Заполняем строки, типо желательно чтобы совпадали
+    for name, desc, url, name_comp, emp in description_vacansions:
+        sheet.append(['нет','','','нет','',name, name_comp ,desc, url, emp])  # Заполняем строки, типо желательно чтобы совпадали
 
     work_book.save("вакансии.xlsx")  # Сохраняем
