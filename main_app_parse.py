@@ -45,7 +45,7 @@ def open_excel():
 lb_request = Label(win, text='Запрос:', font=('Arial', 12))          # Лэйбл запрос
 lb_request.pack()
 en_request = Entry(win, font=('Arial', 12), width=50)                # Поле ввода запроса
-en_request.insert(END, '(python AND junior) OR (python AND стажер) OR (python AND начинающий) OR python') # стандартный запрос в en_request
+en_request.insert(END, '(python AND junior) OR (python AND стажер) OR (python AND начинающий)') # стандартный запрос в en_request
 en_request.pack()
 
 # Лэбл количество страниц
@@ -68,7 +68,7 @@ lb_example.pack()
 
 
 bt_send = Button(win, text='Отправить\nзапрос', font=('Arial', 12), command=send_request)    # кнопка отправить запрос
-bt_send.place(x=200, y=270)
+bt_send.place(x=200, y=180)
 bt_excel = Button(win, text='Создать\nexcel', font=('Arial', 12), command=create_file_excel) # кнопка создать excel
 bt_excel.place(x=170, y=320)
 bt_open_excel = Button(win, text='Открыть\nexcel', font=('Arial', 12), command=open_excel)   # кнопка открыть excel
